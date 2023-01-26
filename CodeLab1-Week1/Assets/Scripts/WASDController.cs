@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WASDController : MonoBehaviour
@@ -36,6 +38,19 @@ public class WASDController : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             rb.AddForce(0, 0, -forceAmount);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Death"))
+        {
+            Debug.Log("death collision");
+        }
+
+        if (other.gameObject.CompareTag("Win"))
+        {
+            Debug.Log("win collision");
         }
     }
 }
